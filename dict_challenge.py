@@ -1,5 +1,4 @@
 loop = True;
-
 while(loop):
 
     char_name = input("Which character do you want to know about? (Starlord, Mystique, Hulk)\n")
@@ -23,5 +22,7 @@ while(loop):
     print(f"{char_name}\'s {char_stat} is: {marvelchars[char_name.title()][char_stat.lower()]}")
 
     user_input = input("Would you like to continue? [Y/N]\n")
-    if (user_input == 'N' or 'n'):
+    if user_input == 'N' or 'n':
         loop = False;
+    else:
+        loop = True;
