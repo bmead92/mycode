@@ -7,37 +7,18 @@ from flask import render_template
 
 app = Flask(__name__)
 
-html= """<style>
-body {
-  background-color: black;
-  text-align: center;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
-</style>
-</head>
-<body>
-
-<h1>TRIVIA TIME</h1>
-<p>What is the meaning of life, the universe, and everything?</p>
-<img src="https://stevetobak.com/wp-content/uploads/2021/02/dont-panic.png" alt="Avatar" style="width:200px">
-
-    <form action = "/login" method = "POST">
-        <p><input type = "text" name = "nm"></p>
-        <p><input type = "submit" value = "submit"></p>
-    </form>
-
-</body>
-</html>"""
-
+# route for correct answer
 @app.route("/correct")
 def success():
     return f"That is correct!"
 
+# base route
 @app.route("/")
 def start():
-    return html
+    # return a trivia template
+    return render_template("trivia_template.html")
 
+# route for login
 @app.route("/login", methods = ["POST"])
 def login():
         if request.form.get("nm") and request.form.get("nm") == "42":
@@ -45,6 +26,7 @@ def login():
         else:
             return redirect("/")
 
+# if run from this program, connect to the server and run app
 if __name__ == "__main__":
    app.run(host="0.0.0.0", port=2224) # runs the application
 

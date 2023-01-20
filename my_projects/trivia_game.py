@@ -4,9 +4,8 @@ import requests
 URL = "https://opentdb.com/api.php?amount=3&category=9&difficulty=easy&type=boolean"
 
 def main():
-
     # data will be a python dictionary rendered from your API link's JSON!
-    data= requests.get(URL).json()
+    data = requests.get(URL).json()
     # display the question
     print(f"Question - {data['results'][0]['question']}")
     # display the answers
